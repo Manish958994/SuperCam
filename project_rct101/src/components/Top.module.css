@@ -1,0 +1,20 @@
+.datap{
+width:100%;
+height: 160px;
+}
+.box{
+    border: 1px solid;
+  margin-top: 20px;
+width: 24%;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+background-color: aliceblue;
+height: 400px;
+}
+.flx{
+    margin: auto;
+    width: 100%;
+height: 450px;
+background-color: #003773;
+gap: 15px;
+
+}
