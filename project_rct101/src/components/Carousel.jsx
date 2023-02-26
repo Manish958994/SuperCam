@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  IconButton,
-  useBreakpointValue,
-  Stack,
-  Heading,
-  Text,
-  Container,
-} from '@chakra-ui/react';
+import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 // And react-slick as our Carousel Lib
@@ -26,7 +18,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default function CaptionCarousel() {
+export default function Carousel() {
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = React.useState(null);
@@ -34,61 +26,24 @@ export default function CaptionCarousel() {
   // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
   const top = useBreakpointValue({ base: '90%', md: '50%' });
-  const side = useBreakpointValue({ base: '30%', md: '40px' });
+  const side = useBreakpointValue({ base: '30%', md: '10px' });
 
-  // This list contains all the data for carousels
-  // This can be static or loaded from a server
+  // These are the images used in the slide
   const cards = [
-    {
-      title: 'Design Projects 1',
-      text:
-        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:
-        'https://www.adorama.com/images/cms/36471New-Blackmagicdesign-022023-Hero-Desktop_(1)_65733.jpg',
-    },
-    {
-      title: 'Design Projects 2',
-      text:
-        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:
-        'https://www.adorama.com/images/cms/36471Feb_Computer_and_Gaming_Week-Hero-Desktop_09496.jpg',
-    },
-    {
-      title: 'Design Projects 3',
-      text:
-        "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-      image:
-        'https://www.adorama.com/images/cms/36471Hero-Semi-Annual-Desktop@2x_11210.jpg',
-    },
-    {
-        title: 'Design Projects 3',
-        text:
-          "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-        image:
-          'https://www.adorama.com/images/cms/36471NPA-Sony-50mm-GM-Hero-Desktop-PO@1.25x_73027.jpg',
-      },
-      {
-        title: 'Design Projects 3',
-        text:
-          "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-        image:
-          'https://www.adorama.com/col/CDP/CALLANDSAVE-Hero-Desktop%401.5x.jpg',
-      },
-      {
-        title: 'Design Projects 3',
-        text:
-          "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-        image:
-          'https://www.adorama.com/col/CDP/CALLANDSAVE-Hero-Desktop%401.5x.jpg',
-      },
+    'https://www.adorama.com/images/cms/36471Hero-Semi-Annual-Desktop@2x_11210.jpg',
+    'https://www.adorama.com/col/CDP/OM%20System%2090mm%20Lens%20-%20NPA-Hero-Desktop-1.jpg',
+    'https://www.adorama.com/images/cms/36471NPA-Sony-50mm-GM-Hero-Desktop-PO@1.25x_73027.jpg',
+    'https://www.adorama.com/images/cms/36471Feb_Computer_and_Gaming_Week-Hero-Desktop_09496.jpg',
+    'https://www.adorama.com/col/CDP/CALLANDSAVE-Hero-Desktop%401.5x.jpg',
+    'https://www.adorama.com/images/cms/36471Adorama-Edge-Presidents-Week-Hero-Desktop@1.5x_67252.jpg',
+
   ];
 
   return (
     <Box
       position={'relative'}
-      height={'400px'}
+      height={'600px'}
       width={'full'}
-      margin="auto"
       overflow={'hidden'}>
       {/* CSS files for react-slick */}
       <link
@@ -105,61 +60,42 @@ export default function CaptionCarousel() {
       {/* Left Icon */}
       <IconButton
         aria-label="left-arrow"
-        variant="ghost"
+        colorScheme="messenger"
+        borderRadius="full"
         position="absolute"
         left={side}
         top={top}
         transform={'translate(0%, -50%)'}
         zIndex={2}
         onClick={() => slider?.slickPrev()}>
-        <BiLeftArrowAlt size="40px" />
+        <BiLeftArrowAlt />
       </IconButton>
       {/* Right Icon */}
       <IconButton
         aria-label="right-arrow"
-        variant="ghost"
+        colorScheme="messenger"
+        borderRadius="full"
         position="absolute"
         right={side}
         top={top}
         transform={'translate(0%, -50%)'}
         zIndex={2}
         onClick={() => slider?.slickNext()}>
-        <BiRightArrowAlt size="40px" />
+        <BiRightArrowAlt />
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((card, index) => (
+        {cards.map((url, index) => (
           <Box
             key={index}
             width="100%"
             height={'md'}
-           
-         
-         
             position="relative"
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
-            backgroundImage={`url(${card.image})`}>
-            {/* This is the block you need to change, to customize the caption */}
-            <Container size="container.lg" height="600px" position="relative">
-              <Stack
-          
-                spacing={6}
-                w={'full'}
-                maxW={'lg'}
-                position="absolute"
-                top="50%"
-                transform="translate(0, -50%)">
-                <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                  {card.title}
-                </Heading>
-                <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                  {card.text}
-                </Text>
-              </Stack>
-            </Container>
-          </Box>
+            backgroundImage={`url(${url})`}
+          />
         ))}
       </Slider>
     </Box>

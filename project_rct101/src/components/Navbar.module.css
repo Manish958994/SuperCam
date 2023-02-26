@@ -1,0 +1,15 @@
+.inp{
+background-color: rgb(237, 237, 237);
+width: 350px;
+margin-left: 150px;
+border-radius: 20px;
+margin-right: 20px;
+}
+.cart{
+   
+    font-size: 80px;
+    color: aliceblue;
+    margin-right: 20px;
+    margin-left: 20px;
+    background: transparent;
+}
