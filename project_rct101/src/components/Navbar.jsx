@@ -152,7 +152,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <img src={img1} />
+
     </div>
   );
 };
